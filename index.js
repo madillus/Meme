@@ -1,12 +1,24 @@
-const download = require('image-downloader')
+const axios = require("axios");
+const cheerio = require("cheerio");
+const fs = require('fs')
+const request = require('request')
 
-const options = {
-  url: 'http://someurl.com/image.jpg',
-  dest: '/path/to/dest'                // will be saved to /path/to/dest/image.jpg
-}
+const mainUrl = `https://memegen.link/examples`;
 
-download.image(options)
-  .then(({ filename }) => {
-    console.log('Saved to', filename)  // saved to /path/to/dest/image.jpg
+axios
+  .get(mainUrl)
+  .then((response) => {
+    dealWithData(response.data);
   })
-  .catch((err) => console.error(err))
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+const dealWithData = (html) => {
+  const $ = cheerio.load(html);
+  const urlMeme = $(".meme-img");
+  const indexValue = (9);
+  console.log(`Source is:\n${urlMeme[indexValue].attribs.src}`)
+
+};
