@@ -1,0 +1,9 @@
+{
+  "name": "memes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "image-downloader": "^4.0.1"
+  }
+}
