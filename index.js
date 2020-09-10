@@ -8,7 +8,7 @@ const mainUrl = `https://memegen.link/examples`;
 
 const memesPath = "./memes";
 
-/* Create folder if it does not exists. */
+/* Create folder if it does not exist. */
 createFolder();
 
 
@@ -23,7 +23,7 @@ axios
 
 
 const dealWithData = (html) => {
-  const $ = cheerio.load(html);
+  const $ = cheerio.load(html); fs.lstat
   const urlMeme = $(".meme-img");
   for (let indexValue = 0; indexValue < 10; indexValue++) {
     const source = urlMeme[indexValue].attribs.src;
