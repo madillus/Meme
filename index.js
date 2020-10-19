@@ -1,12 +1,12 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+const axios = require('axios');
+const cheerio = require('cheerio');
 const fs = require('fs');
 const request = require('request');
 
 const baseUrl = `https://memegen.link/`;
 const mainUrl = `https://memegen.link/examples`;
 
-const memesPath = "./memes";
+const memesPath = './memes';
 
 /* Create folder if it does not exist. */
 createFolder();
@@ -24,7 +24,7 @@ axios
 
 const dealWithData = (html) => {
   const $ = cheerio.load(html);
-  const memeImages = $(".meme-img");
+  const memeImages = $('.meme-img');
   for (let indexValue = 0; indexValue < 10; indexValue++) {
     const source = memeImages[indexValue].attribs.src;
     downloadImage(baseUrl + source, './memes' + '/meme' + indexValue + '.jpg', () => {});
@@ -37,11 +37,11 @@ function createFolder() {
       if (err) {
         console.log(err)
       } else {
-        console.log("New directory successfully created.")
+        console.log('New directory successfully created.')
       }
     });
   } else {
-    console.log("Folder exists already");
+    console.log('Folder exists already');
   }
 }
 
